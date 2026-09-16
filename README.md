@@ -1,32 +1,65 @@
-# Claude Code Harness & Template Library
+# Claude Code Workspace Manager & Harness Ecosystem
 
-Annotated templates that teach you **why** patterns work, not just how to configure them. Each template includes comments explaining trade-offs, alternatives, and when to deviate.
+[![GitHub Stars](https://img.shields.io/github/stars/sonalisrisivani/harness-structure?style=social)](https://github.com/sonalisrisivani/harness-structure)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-6366f1.svg)](https://claude.ai/code)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sonalisrisivani/harness-structure/pulls)
 
-> 🔗 **Reference & Source Attribution**: All foundational templates and tables in this repository are referenced from the official [Claude Code Examples Catalog](https://github.com/Ayodet/Claude-Code/tree/main/examples?utm_source=chatgpt.com).
+**The missing workspace manager for Claude Code.** Instantly inject battle-tested AI personas, security guardrails, memory layers, and workflow automation into any repository with **one command**.
+
+> 🔗 **Reference & Source Attribution**: Foundational templates in this repository are based on the official [Claude Code Examples Catalog](https://github.com/Ayodet/Claude-Code/tree/main/examples?utm_source=chatgpt.com).
 
 ---
 
-## ⚡ Workspace Injection Quick Start
+## ⚡ 1-Line Remote Install (No Clone Required)
 
-This repository includes a built-in **Harness Manager** (`./scripts/harness.sh`) that allows you to instantly inject pre-packaged workspace presets into your active project.
+Inject a specialized Claude Code harness directly into your active project:
 
-### 1. View Available Workspaces
+```bash
+# Inject the Fullstack Next.js harness
+curl -fsSL https://raw.githubusercontent.com/sonalisrisivani/harness-structure/main/scripts/install.sh | bash -s -- fullstack-nextjs
+
+# Or inject the DevOps & SRE harness
+curl -fsSL https://raw.githubusercontent.com/sonalisrisivani/harness-structure/main/scripts/install.sh | bash -s -- devops-cloud-sre
+
+# Or inject the AppSec & Red Team security harness
+curl -fsSL https://raw.githubusercontent.com/sonalisrisivani/harness-structure/main/scripts/install.sh | bash -s -- security-appsec-redteam
+```
+
+---
+
+## 🚀 Why Use a Claude Code Harness?
+
+| Feature | 🚫 Bare Claude Code | ⚡ With Harness Manager |
+| :--- | :--- | :--- |
+| **Context Retention** | Suffers from context decay in long sessions | `CLAUDE.md` context compression anchors retain instructions |
+| **Security Guardrails** | Can accidentally run `rm -rf` or leak API keys | `PreToolUse` hooks block dangerous commands & detect secrets |
+| **Code Quality** | Manual review required after every edit | `PostToolUse` hooks auto-format & typecheck code on save |
+| **Domain Expertise** | Generic coding persona | 16+ specialized agents (DevOps SRE, AppSec, Architecture Reviewer) |
+| **Setup Time** | 30+ minutes configuring `.claude/` files | **5 seconds (1-click turnkey injection)** |
+
+---
+
+## 🛠️ Interactive Workspace Manager (`harness.sh`)
+
+If you clone the repository, you can use the built-in CLI manager with interactive selection and health checks:
+
+### 1. Interactive Selection Menu
+Simply run the script with no arguments to launch the interactive picker:
+```bash
+./scripts/harness.sh
+```
+
+### 2. Run Health Checks (`doctor`)
+Inspect your current project to verify permissions, hook configurations, and JSON syntax:
+```bash
+./scripts/harness.sh doctor
+```
+
+### 3. List & Inspect Workspaces
 ```bash
 ./scripts/harness.sh list
-```
-
-### 2. Inject a Specialized Workspace
-```bash
-./scripts/harness.sh apply fullstack-nextjs
-# or: ./scripts/harness.sh apply devops-cloud-sre
-# or: ./scripts/harness.sh apply security-appsec-redteam
-# or: ./scripts/harness.sh apply python-ai-datascience
-# or: ./scripts/harness.sh apply minimal-starter
-```
-
-### 3. Launch Claude Code
-```bash
-claude
+./scripts/harness.sh info fullstack-nextjs
 ```
 
 ---
@@ -57,14 +90,6 @@ claude
 
 ---
 
-## 🚀 Quick Start (Manual Setup)
-
-1. Copy the template you need from [`examples/`](./examples/)
-2. Customize for your project
-3. Place in the correct location (see paths below)
-
----
-
 ## 📍 File Locations
 
 | Type | Project Location | Global Location |
@@ -76,8 +101,6 @@ claude
 | **Config** | `.claude/` | `~/.claude/` |
 | **Memory** | `./CLAUDE.md` or `.claude/CLAUDE.md` | `~/.claude/CLAUDE.md` |
 | **Modes** | — | `~/.claude/MODE_*.md` |
-
-> **Windows**: Replace `~/.claude/` with `%USERPROFILE%\.claude\`
 
 ---
 

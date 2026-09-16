@@ -72,14 +72,15 @@ cmd_list() {
             echo -e "${COLOR_BOLD}${COLOR_CYAN}[ $name ]${COLOR_RESET}"
             echo -e "  Description : $desc"
 
-            local agent_count
-            agent_count=$(find "$ws/.claude/agents" -type f 2>/dev/null | wc -l | tr -d ' ')
-            local cmd_count
-            cmd_count=$(find "$ws/.claude/commands" -type f 2>/dev/null | wc -l | tr -d ' ')
-            local rule_count
-            rule_count=$(find "$ws/.claude/rules" -type f 2>/dev/null | wc -l | tr -d ' ')
-            local hook_count
-            hook_count=$(find "$ws/.claude/hooks" -type f 2>/dev/null | wc -l | tr -d ' ')
+            local agent_count=0
+            local cmd_count=0
+            local rule_count=0
+            local hook_count=0
+
+            [ -d "$ws/.claude/agents" ] && agent_count=$(find "$ws/.claude/agents" -type f 2>/dev/null | wc -l | tr -d ' ')
+            [ -d "$ws/.claude/commands" ] && cmd_count=$(find "$ws/.claude/commands" -type f 2>/dev/null | wc -l | tr -d ' ')
+            [ -d "$ws/.claude/rules" ] && rule_count=$(find "$ws/.claude/rules" -type f 2>/dev/null | wc -l | tr -d ' ')
+            [ -d "$ws/.claude/hooks" ] && hook_count=$(find "$ws/.claude/hooks" -type f 2>/dev/null | wc -l | tr -d ' ')
 
             echo -e "  Components  : ${COLOR_GREEN}${agent_count} Agents${COLOR_RESET}, ${COLOR_GREEN}${cmd_count} Commands${COLOR_RESET}, ${COLOR_GREEN}${rule_count} Rules${COLOR_RESET}, ${COLOR_GREEN}${hook_count} Hooks${COLOR_RESET}"
             echo ""
